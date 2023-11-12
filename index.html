@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Planilha Excel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            box-sizing: border-box;
+            /* Garante que a largura inclua padding e borda */
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #modal-loading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: fixed;
+            height: 40vh;
+            width: 50vh;
+            top: 50%;
+            left: 50%;
+            z-index: 9999;
+            border-radius: 2%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            background-color: #fff;
+            color: #ccc;
+        }
+
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #ccc;
+            border-radius: 50%;
+            border-top-color: #0001;
+            display: inline-block;
+            animation: loadingspinner .7s linear infinite;
+            margin-bottom: 10px; /* Adicione um espaço entre o spinner e o texto "Loading" */
+        }
+        
+        @keyframes loadingspinner{
+            0%{
+                transform:rotate(0deg)
+            }
+            100%{
+                transform:rotate(360deg)
+            }
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        
+
+    </style>
+</head>
+
+<body>
+    <h1>Upload de Planilha Excel</h1>
+    <form id="uploadForm">
+        <input type="file" id="arquivoInput" accept=".xlsx" required>
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <div class="modal" id="modal-loading" data-backdrop="static" style="visibility: hidden;">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-body text-center">
+              <div class="loading-spinner mb-2"></div>
+               <div>Realizando os Bloqueios</div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/exceljs/dist/exceljs.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
